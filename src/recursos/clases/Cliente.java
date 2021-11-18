@@ -1,25 +1,23 @@
 package recursos.clases;
 
-import java.util.Date;
-
-public class Cliente extends Persona{
-    private long Codigo;
+public class Cliente{
+    private long   Codigo;
+    private long   DNI;
+    private String Nombre;
     private String TipoCliente;
     private String Ocupacion;
     private String Recurrencia;
     private String TallaCamisa;
-    private int TallaPantalon;
+    private int    TallaPantalon;
     private String Referencia;
 
-    public Cliente(){
-        super();
-    }
+    public Cliente(){}
 
-    public Cliente(long pDNI, String pNombre, Date pFechaNacimiento, String pDireccion, long pTelefono,
-                   String pCorreo, int pEdad, long pCodigo, String pTipoCliente, String pOcupacion,
+    public Cliente(long pCodigo, long pDNI, String pNombre, String pTipoCliente, String pOcupacion,
                    String pRecurrencia, String pTallaCamisa, int pTallaPantalon, String pReferencia){
-        super(pDNI, pNombre, pFechaNacimiento, pDireccion, pTelefono, pCorreo, pEdad);
         this.Codigo        = pCodigo;
+        this.DNI           = pDNI;
+        this.Nombre        = pNombre;
         this.TipoCliente   = pTipoCliente;
         this.Ocupacion     = pOcupacion;
         this.Recurrencia   = pRecurrencia;
@@ -32,6 +30,18 @@ public class Cliente extends Persona{
     }
     public void setCodigo(long codigo) {
         this.Codigo = codigo;
+    }
+    public long getDNI() {
+        return DNI;
+    }
+    public void setDNI(long DNI) {
+        this.DNI = DNI;
+    }
+    public String getNombre() {
+        return Nombre;
+    }
+    public void setNombre(String nombre) {
+        this.Nombre = nombre;
     }
     public String getTipoCliente() {
         return TipoCliente;
