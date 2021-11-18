@@ -3,12 +3,12 @@ package recursos.clases;
 import java.util.Date;
 
 public class Puesto {
-    private long Codigo;
+    private long   Codigo;
     private String Nombre;
-    private int NumeroEstaciones; //Cuantas fases tiene ese puesto
+    private int    NumeroEstaciones; //Cuantas fases tiene ese puesto
     private String EstudioMinimo;
-    private int CantidadEmpleados;
-    private Date FechaInicio;
+    private int    CantidadEmpleados;
+    private Date   FechaInicio;
     private String Uniforme; //Si o No
 
     public Puesto(){
