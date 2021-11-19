@@ -2,22 +2,22 @@ package recursos.clases;
 
 import java.util.Date;
 
-public class Empleado extends Persona {
-    //private Area Area;
-    private long Codigo;
+public class Empleado{
+    private long   Codigo;
+    private long   DNI;
+    private String Nombre;
     private String Puesto;
     private double Sueldo;
-    private Date FechaIngreso;
+    private Date   FechaIngreso;
     private String NivelAcademico;
 
     public Empleado (){
-        super();
     }
-    public Empleado (long pDNI, String pNombre, Date pFechaNacimiento, String pDireccion, long pTelefono,
-                     String pCorreo, int pEdad, long pCodigo, String pPuesto, double pSueldo, Date pFechaIngreso,
+    public Empleado (long pCodigo, long pDNI, String pNombre, String pPuesto, double pSueldo, Date pFechaIngreso,
                      String pNivelAcademico){
-        super(pDNI, pNombre, pFechaNacimiento, pDireccion, pTelefono, pCorreo, pEdad);
         this.Codigo         = pCodigo;
+        this.DNI            = pDNI;
+        this.Nombre         = pNombre;
         this.Puesto         = pPuesto;
         this.Sueldo         = pSueldo;
         this.FechaIngreso   = pFechaIngreso;
@@ -28,6 +28,18 @@ public class Empleado extends Persona {
     }
     public void setCodigo(long codigo) {
         this.Codigo = codigo;
+    }
+    public long getDNI() {
+        return DNI;
+    }
+    public void setDNI(long DNI) {
+        this.DNI = DNI;
+    }
+    public String getNombre() {
+        return Nombre;
+    }
+    public void setNombre(String nombre) {
+        this.Nombre = nombre;
     }
     public String getPuesto() {
         return Puesto;

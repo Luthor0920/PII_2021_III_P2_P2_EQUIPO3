@@ -3,13 +3,13 @@ package recursos.clases;
 import java.util.Date;
 
 public class Persona {
-    private long DNI;
+    private long   DNI;
     private String Nombre;
-    private Date FechaNacimiento;
+    private Date   FechaNacimiento;
     private String Direccion;
-    private long Telefono;
+    private long   Telefono;
     private String Correo;
-    private int Edad;
+    private int    Edad;
 
     public Persona(){}
 
