@@ -1,19 +1,14 @@
 package gui;
 
-import jdk.nashorn.internal.scripts.JO;
 import negocio.clases.MaquilaNegocio;
 import recursos.clases.Item;
 import recursos.clases.Maquila;
 
 import javax.swing.*;
-import javax.swing.plaf.BorderUIResource;
 import javax.swing.table.DefaultTableModel;
-import java.awt.*;
 import java.awt.event.*;
-import java.net.MalformedURLException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -61,16 +56,21 @@ public class frmMaquila {
                     maquila.setCodigo(Long.parseLong(txtCodigo.getText()));
                     maquila.setNombre(txtNombre.getText());
                     maquila.setDireccion(txtDireccion.getText());
-                    maquila.setFechaInicio(convertitFormatoTextoFecha(txtFechaInicio.getText()));
+                    maquila.setFechaInicio(convertirFormatoTextoFecha(txtFechaInicio.getText()));
                     maquila.setTelefono(Long.parseLong(txtTelefono.getText()));
                     maquila.setCorreo(txtCorreo.getText());
                     maquila.setCantidadEmpleados(Integer.parseInt(txtCantEmpleados.getText()));
                     String respuesta = new MaquilaNegocio().insertar(maquila);
-                    if (respuesta.contains("Error: ")) {
-                        JOptionPane.showMessageDialog(null,"Guardado", "Exito", JOptionPane.INFORMATION_MESSAGE);
+                    if (!respuesta.contains("Error")) {
+                        JOptionPane.showMessageDialog(null,"Guardado.", "Exito", JOptionPane.INFORMATION_MESSAGE);
+                        leerDatos();
+                        //llenarComboMaquilas();
                     }
+                    else
+                        throw new Exception(respuesta);
+                    llenarComboMaquilas();
                 } catch (Exception ex) {
-                    JOptionPane.showMessageDialog(null,ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(null, ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
                 }
             }
         });
@@ -94,11 +94,10 @@ public class frmMaquila {
                     maquila.setCodigo(Long.parseLong(txtCodigo.getText()));
                     maquila.setNombre(txtNombre.getText());
                     maquila.setDireccion(txtDireccion.getText());
-                    maquila.setFechaInicio(convertitFormatoTextoFecha(txtFechaInicio.getText()));
+                    maquila.setFechaInicio(convertirFormatoTextoFecha(txtFechaInicio.getText()));
                     maquila.setTelefono(Long.parseLong(txtTelefono.getText()));
                     maquila.setCorreo(txtCorreo.getText());
                     maquila.setCantidadEmpleados(Integer.parseInt(txtCantEmpleados.getText()));
-                    String respuesta = new MaquilaNegocio().insertar(maquila);
                     new MaquilaNegocio().actualizar(maquila);
                     leerDatos();
                 } catch (Exception ex) {
@@ -151,11 +150,10 @@ public class frmMaquila {
                         maquila.setCodigo(Long.parseLong(txtCodigo.getText()));
                         maquila.setNombre(txtNombre.getText());
                         maquila.setDireccion(txtDireccion.getText());
-                        maquila.setFechaInicio(convertitFormatoTextoFecha(txtFechaInicio.getText()));
+                        maquila.setFechaInicio(convertirFormatoTextoFecha(txtFechaInicio.getText()));
                         maquila.setTelefono(Long.parseLong(txtTelefono.getText()));
                         maquila.setCorreo(txtCorreo.getText());
                         maquila.setCantidadEmpleados(Integer.parseInt(txtCantEmpleados.getText()));
-                        String respuesta = new MaquilaNegocio().insertar(maquila);
                         new MaquilaNegocio().eliminar(maquila);
                         leerDatos();
                     }
@@ -223,7 +221,7 @@ public class frmMaquila {
 
     private void llenarComboMaquilas() {
         try {
-            List<Maquila> listaMaquilas = new ArrayList<>();
+            List<Maquila> listaMaquilas = new MaquilaNegocio().Leer();
             DefaultComboBoxModel modeloCombo = new DefaultComboBoxModel();
             for (Maquila maquila: listaMaquilas) {
                 Item item = new Item(
@@ -237,7 +235,7 @@ public class frmMaquila {
         }
     }
 
-    private Date convertitFormatoTextoFecha(String txtFecha) {
+    private Date convertirFormatoTextoFecha(String txtFecha) {
         Date fecha = null;
         try {
             fecha = sdf.parse(txtFecha);

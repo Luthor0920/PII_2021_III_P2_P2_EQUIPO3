@@ -12,7 +12,7 @@ public class MaquilaDatos {
     public static String InsertarMaquila(Maquila pMaquila) throws SQLException {
         try {
             Connection cn = Conexion.obtenerConexion();
-            String sql = "INSERT INTO Maquila VALUES (?,?,?,?,?,?,?)";
+            String sql = "INSERT INTO Maquila VALUES(?,?,?,?,?,?,?)";
             PreparedStatement ps = cn.prepareStatement(sql);
             ps.setLong(1, pMaquila.getCodigo());
             ps.setString(2, pMaquila.getNombre());
@@ -24,19 +24,19 @@ public class MaquilaDatos {
             ps.execute();
             ps.close();
             cn.close();
-        }catch(Exception e){
+        }catch(SQLException e){
             e.printStackTrace();
-            return "Error "+e.getMessage();
-            }
+            return "Error: " + e.getMessage();
+        }
         return null;
     }
     public static List<Maquila> leerMaquila() throws SQLException{
         List<Maquila> listaMaquila = new ArrayList<>();
         try {
             Connection cn = Conexion.obtenerConexion();
-            Statement st = cn.createStatement();
-            String sql = "SELECT Codigo, Nombre, Direccion, FechaInicio, Telefono, Email, CantidadEmpleados," +
+            String sql = "SELECT Codigo, Nombre, Direccion, FechaInicio, Telefono, Email, CantidadEmpleados " +
                     "FROM Maquila";
+            Statement st = cn.createStatement();
             ResultSet rs = st.executeQuery(sql);
             while(rs.next()){
                 Maquila maquila = new Maquila();
@@ -49,17 +49,19 @@ public class MaquilaDatos {
                 maquila.setCantidadEmpleados(rs.getInt(7));
                 listaMaquila.add(maquila);
             }
+            st.close();
             rs.close();
             cn.close();
-        }catch (Exception e){
-            e.printStackTrace();
+        }catch (SQLException e){
+            //e.printStackTrace();
+            throw new SQLException(e.getMessage());
         }
         return listaMaquila;
     }
     public static String ActualizarMaquila(Maquila pMaquila) throws SQLException{
         try{
             Connection cn = Conexion.obtenerConexion();
-            String sql = "UPDATE Maquila SET Nombre = ?, Direccion = ?, FechaInicio = ?, Telefono = ?" +
+            String sql = "UPDATE Maquila SET Nombre = ?, Direccion = ?, FechaInicio = ?, Telefono = ?, " +
                     "Email = ?, CantidadEmpleados = ? WHERE Codigo = ?";
             PreparedStatement ps = cn.prepareStatement(sql);
             ps.setString(1, pMaquila.getNombre());
@@ -72,9 +74,10 @@ public class MaquilaDatos {
             ps.execute();
             ps.close();
             cn.close();
-        }catch (Exception e){
-            e.printStackTrace();
-            return "Error "+e.getMessage();
+        }catch (SQLException e){
+            //e.printStackTrace();
+            //return "Error "+e.getMessage();
+            throw new SQLException(e.getMessage());
         }
         return null;
     }
@@ -87,9 +90,9 @@ public class MaquilaDatos {
             ps.execute();
             ps.close();
             cn.close();
-        }catch (Exception e){
+        }catch (SQLException e){
             e.printStackTrace();
-            return "Error "+e.getMessage();
+            return "Error " + e.getMessage();
         }
         return null;
     }
@@ -97,11 +100,11 @@ public class MaquilaDatos {
         List<Maquila> listaMaquila = new ArrayList<>();
         try{
             Connection cn = Conexion.obtenerConexion();
-            String sql = "SELECT Codigo, Nombre, Direccion, FechaInicio, Telefono, Email, CantidadEmpleados," +
+            String sql = "SELECT Codigo, Nombre, Direccion, FechaInicio, Telefono, Email, CantidadEmpleados " +
                     "FROM Maquila WHERE UPPER(Nombre) LIKE ?";
             PreparedStatement ps = cn.prepareStatement(sql);
-            ps.setString(1, "%"+pMaquila.getNombre().toUpperCase()+"%");
-            ResultSet rs =ps.executeQuery();
+            ps.setString(1, "%" + pMaquila.getNombre().toUpperCase() + "%");
+            ResultSet rs = ps.executeQuery();
             if (rs.next()) {
                 do{
                     Maquila maquila = new Maquila();
@@ -115,7 +118,7 @@ public class MaquilaDatos {
                     listaMaquila.add(maquila);
                 }while(rs.next());
             }else{
-                throw new SQLException("Error no se encontró coincidencia");
+                throw new SQLException("Error: no se encontró coincidencia");
             }
             rs.close();
             ps.close();

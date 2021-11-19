@@ -34,7 +34,7 @@ public class ProveedorDatos {
         List<Proveedor> listaProveedor = new ArrayList<>();
         try{
             Connection cn = Conexion.obtenerConexion();
-            String sql = "SELECT CodigoProveedor, NombreProveedor, Direccion, Telefono, FechaInicio, Email" +
+            String sql = "SELECT CodigoProveedor, NombreProveedor, Direccion, Telefono, FechaInicio, Email, " +
                     "TipoProveedor FROM Proveedor";
             Statement st = cn.createStatement();
             ResultSet rs = st.executeQuery(sql);
@@ -53,7 +53,8 @@ public class ProveedorDatos {
             st.close();
             cn.close();
         }catch (Exception e){
-            e.printStackTrace();
+            //e.printStackTrace();
+            throw new SQLException(e.getMessage());
         }
         return listaProveedor;
     }
@@ -93,5 +94,40 @@ public class ProveedorDatos {
             return "Error "+e.getMessage();
         }
         return null;
+    }
+
+    public static List<Proveedor> BuscarProveedor(Proveedor pProveedor) throws SQLException {
+        List<Proveedor> listaProveedores = new ArrayList<>();
+        try {
+            Connection cn = Conexion.obtenerConexion();
+            String sql = "SELECT CodigoProveedor, NombreProveedor, Direccion, Telefono, FechaInicio, Email, " +
+                    "TipoProveedor FROM Proveedor WHERE UPPER(NombreProveedor) LIKE ?";
+            PreparedStatement ps = cn.prepareStatement(sql);
+            ps.setString(1, "%" + pProveedor.getNombre().toUpperCase() + "%");
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                do {
+                    Proveedor proveedor = new Proveedor();
+                    proveedor.setCodigo(rs.getLong(1));
+                    proveedor.setNombre(rs.getString(2));
+                    proveedor.setDireccion(rs.getString(3));
+                    proveedor.setTelefono(rs.getLong(4));
+                    proveedor.setFechaInicio(rs.getDate(5));
+                    proveedor.setCorreo(rs.getString(6));
+                    proveedor.setTipoProveedor(rs.getString(7));
+                    listaProveedores.add(proveedor);
+                } while (rs.next());
+            }
+            else {
+                throw new SQLException("Error: No se encontro coincidencia.");
+            }
+            cn.close();
+            rs.close();
+            ps.close();
+
+        } catch (SQLException e) {
+            throw new SQLException(e.getMessage());
+        }
+        return listaProveedores;
     }
 }
