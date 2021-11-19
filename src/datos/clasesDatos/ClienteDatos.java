@@ -99,20 +99,35 @@ public class ClienteDatos {
         }
         return null;
     }
-    public static List<Cliente> BuscarCliente() throws SQLException{
+    public static List<Cliente> BuscarCliente(Cliente pCliente) throws SQLException{
         List<Cliente> listaCliente = new ArrayList<>();
         try{
             Connection cn = Conexion.obtenerConexion();
-            Statement st = cn.createStatement();
-            String sql = "";
-            ResultSet rs = st.executeQuery(sql);
+            String sql = "SELECT Codigo, DNI, Nombre, TipoCliente, Ocupacion, Recurrencia, TallaCamisa, " +
+                    "TallaPantalon, Referencia FROM Cliente WHERE UPPER (Nombre) LIKE ?";
+            PreparedStatement ps = cn.prepareStatement(sql);
+            ps.setString(1,"%"+pCliente.getNombre().toUpperCase()+"%");
+            ResultSet rs = ps.executeQuery();
             if (rs.next()){
                 do{
                     Cliente cliente = new Cliente();
+                    cliente.setCodigo(rs.getLong(1));
+                    cliente.setDNI(rs.getLong(2));
+                    cliente.setNombre(rs.getString(3));
+                    cliente.setTipoCliente(rs.getString(4));
+                    cliente.setOcupacion(rs.getString(5));
+                    cliente.setRecurrencia(rs.getString(6));
+                    cliente.setTallaCamisa(rs.getString(7));
+                    cliente.setTallaPantalon(rs.getInt(8));
+                    cliente.setReferencia(rs.getString(9));
+                    listaCliente.add(cliente);
                 }while(rs.next());
             }else{
                 throw new SQLException("No se encontro coincidencia");
             }
+            rs.close();
+            ps.close();
+            cn.close();
         }catch (SQLException e){
             throw new SQLException(e.getMessage());
         }
