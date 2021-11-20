@@ -1,5 +1,8 @@
 package gui.ventanaPrincipal;
 
+import com.sun.deploy.uitoolkit.Window;
+import gui.clasesGui.frmMaquila;
+
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -16,7 +19,7 @@ public class frmPrincipal {
     private JButton btnMaquila;
     private JButton btnFactura;
     private JButton btnSalir;
-    private JButton btnArea;
+    private JButton btnPuesto;
 
     public frmPrincipal() {
 
@@ -28,7 +31,7 @@ public class frmPrincipal {
                             "Esta seguro que desea salir?",
                             "Salir Precaucion", JOptionPane.WARNING_MESSAGE);
                     if (confirmar == JOptionPane.YES_OPTION) {
-
+                        System.exit(0);
                     }
                 } catch (Exception ex) {
                     JOptionPane.showMessageDialog(null, ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
@@ -44,8 +47,6 @@ public class frmPrincipal {
                     JOptionPane.showMessageDialog(null, ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
                 }
             }
-
-
         });
         btnProduccion.addActionListener(new ActionListener() {
             @Override
@@ -87,7 +88,7 @@ public class frmPrincipal {
                 }
             }
         });
-        btnArea.addActionListener(new ActionListener() {
+        btnPuesto.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
@@ -101,7 +102,7 @@ public class frmPrincipal {
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
-
+                    frmMaquila.main();
                 } catch (Exception ex) {
                     JOptionPane.showMessageDialog(null, ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
                 }
