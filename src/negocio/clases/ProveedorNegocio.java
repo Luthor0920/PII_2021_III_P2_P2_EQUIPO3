@@ -20,15 +20,14 @@ public class ProveedorNegocio {
 
     public String insertar(Proveedor pProveedor) throws Exception {
         String respuesta = "Error: ";
-        Long codigo = pProveedor.getCodigo();
         Long telefono = pProveedor.getTelefono();
         int digitos=0;
         try {
             //validaciones
-            if (codigo == null) {
+            if (String.valueOf(pProveedor.getCodigo()).isEmpty()) {
                 throw new Exception("Error: El codigo no debe estar vacio.");
             }
-            if (codigo <= 0) {
+            if (pProveedor.getCodigo() <= 0) {
                 throw new Exception("Error: El codigo no debe ser menor a 0.");
             }
             if (pProveedor.getNombre().isEmpty()) {

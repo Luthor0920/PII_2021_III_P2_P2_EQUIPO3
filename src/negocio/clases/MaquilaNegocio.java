@@ -21,12 +21,10 @@ public class MaquilaNegocio {
     public String insertar(Maquila pMaquila) {
         String respuesta = "Error";
         int digitos=0;
-        Long codigo = pMaquila.getCodigo();
         Long telefono = pMaquila.getTelefono();
-        Integer cantidad = new Integer(pMaquila.getCantidadEmpleados());
         try {
             //validaciones
-            if (codigo == null) {
+            if (String.valueOf(pMaquila.getCodigo()).isEmpty()) {
                 throw new Exception("Error: El codigo no debe estar vacio.");
             }
             if (pMaquila.getCodigo() <= 0) {
@@ -73,7 +71,7 @@ public class MaquilaNegocio {
             if (pMaquila.getCorreo().length() < 6) {
                 throw new Exception("Error: Correo incorrecto.");
             }
-            if (cantidad == null) {
+            if (String.valueOf(pMaquila.getCantidadEmpleados()).isEmpty()) {
                 throw new Exception("Error: La cantidad de empleados no debe estar vacia.");
             }
             if (pMaquila.getCantidadEmpleados() < 0) {
@@ -94,12 +92,10 @@ public class MaquilaNegocio {
 
     public void actualizar(Maquila pMaquila) throws Exception {
         int digitos=0;
-        Long codigo = pMaquila.getCodigo();
         Long telefono = pMaquila.getTelefono();
-        Integer cantidad = new Integer(pMaquila.getCantidadEmpleados());
         try {
             //validaciones:
-            if (codigo == null) {
+            if (String.valueOf(pMaquila.getCodigo()).isEmpty()) {
                 throw new Exception("Error: El codigo no debe estar vacio.");
             }
             if (pMaquila.getCodigo() <= 0) {
@@ -147,7 +143,7 @@ public class MaquilaNegocio {
             if (pMaquila.getCorreo().length() < 11) {
                 throw new Exception("Error: Correo incorrecto.");
             }
-            if (cantidad == null) {
+            if (String.valueOf(pMaquila.getCantidadEmpleados()).isEmpty()) {
                 throw new Exception("Error: La cantidad de empleados no debe estar vacia.");
             }
             if (pMaquila.getCantidadEmpleados() < 0) {
@@ -161,9 +157,8 @@ public class MaquilaNegocio {
     }
 
     public void eliminar(Maquila pMaquila) throws Exception {
-        Long codigo = pMaquila.getCodigo();
         try {
-            if (codigo == null) {
+            if (String.valueOf(pMaquila.getCodigo()).isEmpty()) {
                 throw new Exception("Error: El codigo no debe estar vacio.");
             }
              else if (pMaquila.getCodigo() <= 0) {
