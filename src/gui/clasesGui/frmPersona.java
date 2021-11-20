@@ -257,11 +257,11 @@ public class frmPersona {
         txtEdad.setText("");
     }
 
-    public static void main(String[] args) {
+    public static void main() {
         JFrame frame = new JFrame("Personas");
         frame.setContentPane(new frmPersona().jpaPrincipal);
         frame.setResizable(false);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         frame.pack();
         frame.setLocationRelativeTo(null);
         frame.setVisible(true);
