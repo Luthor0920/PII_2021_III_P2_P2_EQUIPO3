@@ -11,7 +11,6 @@ public class EmpleadoNegocio {
     public List<Empleado> leer() throws Exception {
         List<Empleado> listaEmpleados = new ArrayList<>();
         try {
-
             listaEmpleados = EmpleadoDatos.leerEmpleado();
         } catch (Exception e) {
             throw new Exception(e.getMessage());
