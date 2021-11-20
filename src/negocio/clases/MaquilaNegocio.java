@@ -81,7 +81,7 @@ public class MaquilaNegocio {
             }
 
             respuesta = MaquilaDatos.InsertarMaquila(pMaquila);
-            if (respuesta.equals(null)) {
+            if (respuesta == null) {
                 respuesta = "Guardado Exitosamente";
             }
         } catch (Exception e) {
