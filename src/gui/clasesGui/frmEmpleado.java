@@ -67,6 +67,7 @@ public class frmEmpleado {
                         JOptionPane.showMessageDialog(null, "Guardado", "Exito", JOptionPane.INFORMATION_MESSAGE);
                         leerDatos();
                         llenarComboEmpleado();
+                        limpiar();
                     }
                     else
                         throw new Exception(respuesta);
@@ -101,6 +102,8 @@ public class frmEmpleado {
                     empleado.setNivelAcademico(txtNivelAcademico.getText());
                     new EmpleadoNegocio().actualizar(empleado);
                     leerDatos();
+                    llenarComboNombre();
+                    limpiar();
                 } catch (Exception ex) {
                     JOptionPane.showMessageDialog(null, ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
                 }
@@ -110,6 +113,7 @@ public class frmEmpleado {
             @Override
             public void actionPerformed(ActionEvent e) {
                 leerDatos();
+                llenarComboNombre();
             }
         });
         btnBuscar.addActionListener(new ActionListener() {
@@ -133,7 +137,8 @@ public class frmEmpleado {
                         modelo.addRow(registroLeido);
                     }
                     tblDatos.setModel(modelo);
-
+                    llenarComboNombre();
+                    limpiar();
                 } catch (Exception ex) {
                     JOptionPane.showMessageDialog(null, ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
                 }
@@ -160,7 +165,8 @@ public class frmEmpleado {
                         leerDatos();
                         llenarComboEmpleado();
                     }
-
+                    llenarComboNombre();
+                    limpiar();
                 } catch (Exception ex) {
                     JOptionPane.showMessageDialog(null, ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
                 }
@@ -188,6 +194,7 @@ public class frmEmpleado {
                 Object objeto = cboComboEmpleado.getSelectedItem();
                 long itemEmpleado = ((Item)objeto).getCodigo();
                 JOptionPane.showMessageDialog(null, itemEmpleado);
+                llenarComboNombre();
             }
         });
         cboNombre.addMouseListener(new MouseAdapter() {
@@ -288,6 +295,15 @@ public class frmEmpleado {
             JOptionPane.showMessageDialog(null, pe.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
         }
         return fecha;
+    }
+
+    private void limpiar() {
+        txtCodigo.setText("");
+        txtDNI.setText("");
+        txtPuesto.setText("");
+        txtSueldo.setText("");
+        txtFechaIngreso.setText("");
+        txtNivelAcademico.setText("");
     }
 
     public static void main(String[] args) {

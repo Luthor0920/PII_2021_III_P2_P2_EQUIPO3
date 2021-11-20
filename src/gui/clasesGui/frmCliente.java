@@ -96,6 +96,8 @@ public class frmCliente {
                     cliente.setReferencia(txtReferencia.getText());
                     new ClienteNegocio().actualizar(cliente);
                     leerDatos();
+                    llenarComboDNI();
+                    limpiar();
                 } catch (Exception ex) {
                     JOptionPane.showMessageDialog(null, ex.getMessage(), "Errpr", JOptionPane.ERROR_MESSAGE);
                 }
@@ -105,6 +107,7 @@ public class frmCliente {
             @Override
             public void actionPerformed(ActionEvent e) {
                 leerDatos();
+                llenarComboDNI();
             }
         });
         btnBuscar.addActionListener(new ActionListener() {
@@ -112,7 +115,7 @@ public class frmCliente {
             public void actionPerformed(ActionEvent e) {
                 try {
                     Cliente clienteBuscar = new Cliente();
-                    clienteBuscar.setNombre(txtDNI.getText());
+                    clienteBuscar.setNombre(cboNombre.getSelectedItem().toString());
                     List<Cliente> listaClientes = new ClienteNegocio().buscar(clienteBuscar);
                     modelo.setRowCount(0);
                     for (Cliente cliente: listaClientes) {
@@ -130,6 +133,8 @@ public class frmCliente {
                         modelo.addRow(registroLeido);
                     }
                     tblDatos.setModel(modelo);
+                    llenarComboDNI();
+                    limpiar();
                 } catch (Exception ex) {
                     JOptionPane.showMessageDialog(null, ex.getMessage(), "Errpr", JOptionPane.ERROR_MESSAGE);
                 }
@@ -157,6 +162,8 @@ public class frmCliente {
                         new ClienteNegocio().eliminar(cliente);
                         leerDatos();
                         llenarComboClientes();
+                        llenarComboDNI();
+                        limpiar();
                     }
                 } catch (Exception ex) {
                     JOptionPane.showMessageDialog(null, ex.getMessage(), "Errpr", JOptionPane.ERROR_MESSAGE);
@@ -187,18 +194,16 @@ public class frmCliente {
                 Object objeto = cboComboCliente.getSelectedItem();
                 long itemCliente = ((Item)objeto).getCodigo();
                 JOptionPane.showMessageDialog(null, itemCliente);
+                llenarComboDNI();
             }
         });
         cboNombre.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
                 try {
-
                     Object objeto = cboNombre.getSelectedItem();
                     long dni = ((Item)objeto).getCodigo();
-
                     txtDNI.setText(String.valueOf(dni));
-
                 } catch (Exception ex) {
                     JOptionPane.showMessageDialog(null, ex.getMessage(), "Errpr", JOptionPane.ERROR_MESSAGE);
                 }
@@ -280,6 +285,17 @@ public class frmCliente {
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
         }
+    }
+
+    private void limpiar() {
+        txtCodigo.setText("");
+        txtDNI.setText("");
+        txtTipoCliente.setText("");
+        txtOcupacion.setText("");
+        txtRecurrencia.setText("");
+        txtTallaCamisa.setText("");
+        txtTallaPantalon.setText("");
+        txtReferencia.setText("");
     }
 
     public static void main(String[] args) {

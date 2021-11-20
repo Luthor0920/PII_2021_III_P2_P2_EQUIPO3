@@ -65,6 +65,7 @@ public class frmProveedor {
                        JOptionPane.showMessageDialog(null,"Guardado", "Exito", JOptionPane.INFORMATION_MESSAGE);
                        leerDatos();
                        llenarComboProveedor();
+                       limpiar();
                    }
                    else
                        throw new Exception(respuesta);
@@ -98,6 +99,7 @@ public class frmProveedor {
                     proveedor.setTipoProveedor(txtTipoProveedor.getText());
                     new ProveedorNegocio().actualizar(proveedor);
                     leerDatos();
+                    limpiar();
                 } catch (Exception ex) {
                     JOptionPane.showMessageDialog(null, ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
                 }
@@ -130,6 +132,7 @@ public class frmProveedor {
                         modelo.addRow(registroLeido);
                     }
                     tblDatos.setModel(modelo);
+                    limpiar();
                 } catch (Exception ex) {
                     JOptionPane.showMessageDialog(null, ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
                 }
@@ -153,6 +156,7 @@ public class frmProveedor {
                         proveedor.setTipoProveedor(txtTipoProveedor.getText());
                         new ProveedorNegocio().eliminar(proveedor);
                         leerDatos();
+                        limpiar();
                     }
                 } catch (Exception ex) {
                     JOptionPane.showMessageDialog(null, ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
@@ -241,6 +245,16 @@ public class frmProveedor {
             JOptionPane.showMessageDialog(null, pe.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
         }
         return fecha;
+    }
+
+    private void limpiar() {
+        txtCodigo.setText("");
+        txtNombre.setText("");
+        txtDireccion.setText("");
+        txtTelefono.setText("");
+        txtFechaInicio.setText("");
+        txtCorreo.setText("");
+        txtTipoProveedor.setText("");
     }
 
     public static void main(String[] args) {

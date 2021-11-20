@@ -9,10 +9,6 @@ public class Item {
         this.Nombre = pNombre;
     }
 
-    public Item(String pNombre, long pDNI) {
-        this.Nombre = pNombre;
-        this.Codigo = pDNI;
-    }
 
     public long getCodigo() {
         return Codigo;

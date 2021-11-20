@@ -1,5 +1,6 @@
 package negocio.clases;
 
+import com.sun.org.apache.bcel.internal.generic.IF_ACMPEQ;
 import datos.clasesDatos.ClienteDatos;
 import recursos.clases.Cliente;
 
@@ -68,9 +69,12 @@ public class ClienteNegocio {
             if (pCliente.getTallaCamisa().isEmpty()) {
                 throw new Exception("Error: La talla de camisa no debe estar vacia.");
             }
-            if (pCliente.getTallaCamisa() != "XS" || pCliente.getTallaCamisa() != "S" || pCliente.getTallaCamisa() != "M" ||
-                    pCliente.getTallaCamisa() != "L" || pCliente.getTallaCamisa() != "XL" || pCliente.getTallaCamisa() != "XXL") {
-                throw new Exception("Error: Talla de camisa invalida.");
+            //if ((!pCliente.getTallaCamisa().contains("XS")) || (!pCliente.getTallaCamisa().contains("S")) || (!pCliente.getTallaCamisa().contains("M")) ||
+            //        (!pCliente.getTallaCamisa().contains("L")) || (!pCliente.getTallaCamisa().contains("XL")) || (!pCliente.getTallaCamisa().contains("XXL"))) {
+            //    throw new Exception("Error: Talla de camisa invalida.");
+            //}
+            if (pCliente.getTallaCamisa().length() > 3) {
+                throw new Exception("Error: Talla de camisa incorrecta.");
             }
             if (String.valueOf(pCliente.getTallaPantalon()).isEmpty()) {
                 throw new Exception("Error: La talla de pantalon no debe estar vacia.");
@@ -145,9 +149,12 @@ public class ClienteNegocio {
             if (pCliente.getTallaCamisa().isEmpty()) {
                 throw new Exception("Error: La talla de camisa no debe estar vacia.");
             }
-            if (pCliente.getTallaCamisa() != "XS" || pCliente.getTallaCamisa() != "S" || pCliente.getTallaCamisa() != "M" ||
-                    pCliente.getTallaCamisa() != "L" || pCliente.getTallaCamisa() != "XL" || pCliente.getTallaCamisa() != "XXL") {
-                throw new Exception("Error: Talla de camisa invalida.");
+            //if ((!pCliente.getTallaCamisa().contains("XS")) || (!pCliente.getTallaCamisa().contains("S")) || (!pCliente.getTallaCamisa().contains("M")) ||
+            //        (!pCliente.getTallaCamisa().contains("L")) || (!pCliente.getTallaCamisa().contains("XL")) || (!pCliente.getTallaCamisa().contains("XXL"))) {
+            //    throw new Exception("Error: Talla de camisa invalida.");
+            //}
+            if (pCliente.getTallaCamisa().length() > 3) {
+                throw new Exception("Error: Talla de camisa incorrecta.");
             }
             if (String.valueOf(pCliente.getTallaPantalon()).isEmpty()) {
                 throw new Exception("Error: La talla de pantalon no debe estar vacia.");

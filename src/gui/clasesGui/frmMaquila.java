@@ -68,6 +68,7 @@ public class frmMaquila {
                         JOptionPane.showMessageDialog(null,"Guardado", "Exito", JOptionPane.INFORMATION_MESSAGE);
                         leerDatos();
                         llenarComboMaquilas();
+                        limpiar();
                     }else{
                         throw new Exception(respuesta);
                     }
@@ -102,6 +103,7 @@ public class frmMaquila {
                     maquila.setCantidadEmpleados(Integer.parseInt(txtCantEmpleados.getText()));
                     new MaquilaNegocio().actualizar(maquila);
                     leerDatos();
+                    limpiar();
                 } catch (Exception ex) {
                     JOptionPane.showMessageDialog(null, ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
                 }
@@ -110,6 +112,7 @@ public class frmMaquila {
         btnListar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+
                 leerDatos();
             }
         });
@@ -134,7 +137,7 @@ public class frmMaquila {
                         modelo.addRow(registroLeido);
                     }
                     tblDatos.setModel(modelo);
-
+                    limpiar();
                 } catch (Exception ex) {
                     JOptionPane.showMessageDialog(null, ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
                 }
@@ -159,6 +162,7 @@ public class frmMaquila {
                         new MaquilaNegocio().eliminar(maquila);
                         leerDatos();
                         llenarComboMaquilas();
+                        limpiar();
                     }
                 } catch (Exception ex) {
                     JOptionPane.showMessageDialog(null, ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
@@ -255,6 +259,16 @@ public class frmMaquila {
             JOptionPane.showMessageDialog(null, pe.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
         }
         return fecha;
+    }
+
+    private void limpiar() {
+        txtCodigo.setText("");
+        txtNombre.setText("");
+        txtDireccion.setText("");
+        txtFechaInicio.setText("");
+        txtTelefono.setText("");
+        txtCorreo.setText("");
+        txtCantEmpleados.setText("");
     }
 
     public static void main() {

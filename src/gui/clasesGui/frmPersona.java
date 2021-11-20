@@ -65,6 +65,7 @@ public class frmPersona {
                         JOptionPane.showMessageDialog(null, "Guardado", "Exito", JOptionPane.INFORMATION_MESSAGE);
                         leerDatos();
                         llenarComboPersonas();
+                        limpiar();
                     }
                     else
                         throw new Exception(respuesta);
@@ -98,6 +99,7 @@ public class frmPersona {
                     persona.setEdad(Integer.parseInt(txtEdad.getText()));
                     new PersonaNegocio().actualizar(persona);
                     leerDatos();
+                    limpiar();
                 } catch (Exception ex) {
                     JOptionPane.showMessageDialog(null, ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
                 }
@@ -130,6 +132,7 @@ public class frmPersona {
                         modelo.addRow(registroLeido);
                     }
                     tblDatos.setModel(modelo);
+                    limpiar();
                 } catch (Exception ex) {
                     JOptionPane.showMessageDialog(null, ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
                 }
@@ -154,6 +157,7 @@ public class frmPersona {
                         new PersonaNegocio().eliminar(persona);
                         leerDatos();
                         llenarComboPersonas();
+                        limpiar();
                     }
                 } catch (Exception ex) {
                     JOptionPane.showMessageDialog(null, ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
@@ -241,6 +245,16 @@ public class frmPersona {
             JOptionPane.showMessageDialog(null, pe.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
         }
         return fecha;
+    }
+
+    private void limpiar() {
+        txtDNI.setText("");
+        txtNombre.setText("");
+        txtFechaNacimiento.setText("");
+        txtDireccion.setText("");
+        txtTelefono.setText("");
+        txtCorreo.setText("");
+        txtEdad.setText("");
     }
 
     public static void main(String[] args) {

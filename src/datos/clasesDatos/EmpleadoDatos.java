@@ -101,6 +101,7 @@ public class EmpleadoDatos {
             String sql = "SELECT Codigo, DNI, Nombre, Puesto, Sueldo, FechaIngreso, NivelAcademico FROM Empleado WHERE " +
                     "UPPER(Nombre) LIKE ?";
             PreparedStatement ps = cn.prepareStatement(sql);
+            ps.setString(1, "%" + pEmpleado.getNombre().toUpperCase() + "%");
             ResultSet rs = ps.executeQuery();
             if (rs.next()){
                 do{

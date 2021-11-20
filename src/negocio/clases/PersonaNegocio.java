@@ -120,6 +120,12 @@ public class PersonaNegocio {
             if (pPersona.getFechaNacimiento().getYear() > 2021) {
                 throw new Exception("Error: Fecha invalida.");
             }
+            if (pPersona.getDireccion().isEmpty()) {
+                throw new Exception("Error: La direccion no debe estar vacia.");
+            }
+            if (pPersona.getDireccion().length() < 3) {
+                throw new Exception("Error: La direccion esta incorrecta.");
+            }
             if (telefono == null) {
                 throw new Exception("Error: El numero de telefono no debe estar vacio.");
             }
