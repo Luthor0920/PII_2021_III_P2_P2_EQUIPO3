@@ -80,7 +80,7 @@ public class ProveedorNegocio {
             }
 
             respuesta = ProveedorDatos.IngresarProveedor(pProveedor);
-            if (respuesta.equals(null)) {
+            if (respuesta == null) {
                 respuesta = "Guardado Exitosamente";
             }
         } catch (Exception e) {

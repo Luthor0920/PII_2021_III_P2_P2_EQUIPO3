@@ -3,10 +3,17 @@ package recursos.clases;
 public class Item {
     private long Codigo;
     private String Nombre;
+
     public Item(long pCodigo, String pNombre) {
         this.Codigo = pCodigo;
         this.Nombre = pNombre;
     }
+
+    public Item(String pNombre, long pDNI) {
+        this.Nombre = pNombre;
+        this.Codigo = pDNI;
+    }
+
     public long getCodigo() {
         return Codigo;
     }

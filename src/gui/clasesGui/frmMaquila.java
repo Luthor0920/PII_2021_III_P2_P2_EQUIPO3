@@ -4,9 +4,12 @@ import negocio.clases.MaquilaNegocio;
 import recursos.clases.Item;
 import recursos.clases.Maquila;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.event.*;
+import java.awt.image.BufferedImage;
+import java.net.URL;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -155,6 +158,7 @@ public class frmMaquila {
                         maquila.setCantidadEmpleados(Integer.parseInt(txtCantEmpleados.getText()));
                         new MaquilaNegocio().eliminar(maquila);
                         leerDatos();
+                        llenarComboMaquilas();
                     }
                 } catch (Exception ex) {
                     JOptionPane.showMessageDialog(null, ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
@@ -193,6 +197,15 @@ public class frmMaquila {
         modelo.addColumn("Telefono");
         modelo.addColumn("Correo");
         modelo.addColumn("Cantidad de Empleados");
+        BufferedImage imagen = null;
+        try {
+            URL archivo = getClass().getResource("src/recursos/imagenes/icono-registrar.png");
+            imagen = ImageIO.read(archivo);
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+        }
+        ImageIcon icono = new ImageIcon(imagen);
+        btnRegistrar.setIcon(icono);
         leerDatos();
         llenarComboMaquilas();
     }
@@ -253,4 +266,5 @@ public class frmMaquila {
         frame.setLocationRelativeTo(null);
         frame.setVisible(true);
     }
+
 }

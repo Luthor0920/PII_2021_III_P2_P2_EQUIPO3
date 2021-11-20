@@ -12,7 +12,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
-public class frmProduccion {
+public class frmProveedor {
     private JPanel jpaPrincipal;
     private JPanel jpaTitulo;
     private JLabel lblTitulo;
@@ -46,7 +46,7 @@ public class frmProduccion {
     SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
     DefaultTableModel modelo;
 
-    public frmProduccion() {
+    public frmProveedor() {
         iniciar();
         btnRegistrar.addActionListener(new ActionListener() {
             @Override
@@ -244,8 +244,8 @@ public class frmProduccion {
     }
 
     public static void main(String[] args) {
-        JFrame frame = new JFrame("frmProduccion");
-        frame.setContentPane(new frmProduccion().jpaPrincipal);
+        JFrame frame = new JFrame("Proveedor");
+        frame.setContentPane(new frmProveedor().jpaPrincipal);
         frame.setResizable(false);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.pack();

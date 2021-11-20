@@ -12,7 +12,7 @@ public class PersonaDatos {
     public static String InsertarPersona(Persona pPersona) throws SQLException {
         try{
             Connection cn = Conexion.obtenerConexion();
-            String sql = "INSERT INTO Persona VALUES (?,?,?,?,?,?,?)";
+            String sql = "INSERT INTO Persona VALUES(?,?,?,?,?,?,?)";
             PreparedStatement ps = cn.prepareStatement(sql);
             ps.setLong(1, pPersona.getDNI());
             ps.setString(2, pPersona.getNombre());
@@ -52,14 +52,15 @@ public class PersonaDatos {
             st.close();
             cn.close();
         }catch(Exception e){
-            e.printStackTrace();
+            //e.printStackTrace();
+            throw new SQLException(e.getMessage());
         }
         return listaPersonas;
     }
     public static String ActualizarPersona(Persona pPersona) throws SQLException {
         try{
             Connection cn = Conexion.obtenerConexion();
-            String sql = "UPDATE Persona SET Nombre = ?, FechaNacimiento = ?, Direccion = ?, Telefono = ?," +
+            String sql = "UPDATE Persona SET Nombre = ?, FechaNacimiento = ?, Direccion = ?, Telefono = ?, " +
                     "Email = ?, Edad = ? WHERE DNI = ?";
             PreparedStatement ps = cn.prepareStatement(sql);
             ps.setString(1, pPersona.getNombre());
@@ -73,8 +74,8 @@ public class PersonaDatos {
             ps.close();
             cn.close();
         }catch (Exception e){
-            e.printStackTrace();
-            return "Error "+e.getMessage();
+            throw new SQLException(e.getMessage());
+            //return "Error "+e.getMessage();
         }
         return null;
     }
@@ -88,8 +89,8 @@ public class PersonaDatos {
             ps.close();
             cn.close();
         }catch (Exception e){
-            e.printStackTrace();
-            return "Error "+e.getMessage();
+            throw new SQLException(e.getMessage());
+            //return "Error "+e.getMessage();
         }
         return null;
     }
@@ -97,7 +98,7 @@ public class PersonaDatos {
         List<Persona> listaPersona = new ArrayList<>();
         try{
             Connection cn = Conexion.obtenerConexion();
-            String sql = "SELECT DNI, Nombre, FechaNacimiento, Direccion, Telefono, Email, Edad FROM Persona" +
+            String sql = "SELECT DNI, Nombre, FechaNacimiento, Direccion, Telefono, Email, Edad FROM Persona " +
                     "WHERE UPPER(Nombre) LIKE ?";
             PreparedStatement ps = cn.prepareStatement(sql);
             ps.setString(1, "%"+pPersona.getNombre().toUpperCase()+"%");
@@ -115,7 +116,7 @@ public class PersonaDatos {
                     listaPersona.add(persona);
                 }while(rs.next());
             }else{
-                throw new SQLException("Error no se encontró coincidencia");
+                throw new SQLException("Error: No se encontró coincidencia");
             }
             rs.close();
             ps.close();

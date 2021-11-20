@@ -12,7 +12,7 @@ public class ClienteDatos {
     public static String InsertarCliente(Cliente pCliente) throws SQLException {
         try{
             Connection cn = Conexion.obtenerConexion();
-            String sql = "INSERT INTO Cliente VALUES (?,?,?,?,?,?,?,?,?)";
+            String sql = "INSERT INTO Cliente VALUES(?,?,?,?,?,?,?,?,?)";
             PreparedStatement ps = cn.prepareStatement(sql);
             ps.setLong(1, pCliente.getCodigo());
             ps.setLong(2, pCliente.getDNI());
@@ -32,7 +32,7 @@ public class ClienteDatos {
         }
         return null;
     }
-    public static List<Cliente> leerCliente(Cliente pCliente) throws SQLException{
+    public static List<Cliente> leerCliente() throws SQLException{
         List<Cliente> listaCliente = new ArrayList<>();
         try{
             Connection cn = Conexion.obtenerConexion();
@@ -56,14 +56,15 @@ public class ClienteDatos {
             rs.close();
             cn.close();
         }catch(Exception e){
-            e.printStackTrace();
+            //e.printStackTrace();
+            throw new SQLException(e.getMessage());
         }
         return listaCliente;
     }
     public static String ActualizarCliente(Cliente pCliente) throws SQLException {
         try{
             Connection cn = Conexion.obtenerConexion();
-            String sql = "UPDATE Cliente SET DNI = ?, Nombre = ?, TipoCliente= ?, Ocupacion = ?, Recurrencia = ?, TallaCamisa = ?" +
+            String sql = "UPDATE Cliente SET DNI = ?, Nombre = ?, TipoCliente= ?, Ocupacion = ?, Recurrencia = ?, TallaCamisa = ?, " +
                     "TallaPantalon = ?, Referencia = ? WHERE Codigo = ?";
             PreparedStatement ps = cn.prepareStatement(sql);
             ps.setLong(1, pCliente.getDNI());
@@ -104,7 +105,7 @@ public class ClienteDatos {
         try{
             Connection cn = Conexion.obtenerConexion();
             String sql = "SELECT Codigo, DNI, Nombre, TipoCliente, Ocupacion, Recurrencia, TallaCamisa, " +
-                    "TallaPantalon, Referencia FROM Cliente WHERE UPPER (Nombre) LIKE ?";
+                    "TallaPantalon, Referencia FROM Cliente WHERE UPPER(Nombre) LIKE ?";
             PreparedStatement ps = cn.prepareStatement(sql);
             ps.setString(1,"%"+pCliente.getNombre().toUpperCase()+"%");
             ResultSet rs = ps.executeQuery();

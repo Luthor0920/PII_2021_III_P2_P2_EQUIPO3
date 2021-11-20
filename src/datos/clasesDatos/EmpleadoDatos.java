@@ -12,7 +12,7 @@ public class EmpleadoDatos {
     public static String IngresarEmpleado(Empleado pEmpleado) throws SQLException {
         try{
             Connection cn = Conexion.obtenerConexion();
-            String sql = "INSERT INTO Empleado VALUES (?,?,?,?,?,?,?)";
+            String sql = "INSERT INTO Empleado VALUES(?,?,?,?,?,?,?)";
             PreparedStatement ps = cn.prepareStatement(sql);
             ps.setLong(1, pEmpleado.getCodigo());
             ps.setLong(2, pEmpleado.getDNI());
@@ -52,14 +52,15 @@ public class EmpleadoDatos {
             st.close();
             cn.close();
         }catch (Exception e){
-            e.printStackTrace();
+            //e.printStackTrace();
+            throw new SQLException(e.getMessage());
         }
         return listaEmpleado;
     }
     public static String ActualizarEmpleado(Empleado pEmpleado) throws SQLException{
         try{
             Connection cn = Conexion.obtenerConexion();
-            String sql = "UPDATE Empleado SET DNI = ?, Nombre = ?, Puesto = ?, Sueldo = ?, FechaIngreso = ?," +
+            String sql = "UPDATE Empleado SET DNI = ?, Nombre = ?, Puesto = ?, Sueldo = ?, FechaIngreso = ?, " +
                     "NivelAcademico = ? WHERE Codigo = ?";
             PreparedStatement ps = cn.prepareStatement(sql);
             ps.setLong(1, pEmpleado.getDNI());
@@ -97,8 +98,8 @@ public class EmpleadoDatos {
         List<Empleado> listaEmpleado = new ArrayList<>();
         try{
             Connection cn = Conexion.obtenerConexion();
-            String sql = "SELECT Codigo, DNI, Nombre, Puesto, Sueldo, FechaIngreso, NivelAcademico FROM Empleado" +
-                    "UPPER (Nombre) LIKE ?";
+            String sql = "SELECT Codigo, DNI, Nombre, Puesto, Sueldo, FechaIngreso, NivelAcademico FROM Empleado WHERE " +
+                    "UPPER(Nombre) LIKE ?";
             PreparedStatement ps = cn.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
             if (rs.next()){
@@ -114,6 +115,9 @@ public class EmpleadoDatos {
                     listaEmpleado.add(empleado);
                 }while(rs.next());
             }
+            else
+                throw new SQLException("Error: No se encontro coincidencia.");
+
             rs.close();
             ps.close();
             cn.close();
