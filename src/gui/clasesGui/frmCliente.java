@@ -208,7 +208,7 @@ public class frmCliente {
         txtDNI.addKeyListener(new KeyAdapter() {
             @Override
             public void keyTyped(KeyEvent e) {
-                JOptionPane.showMessageDialog(null, "Seleccione el DNI.");
+                JOptionPane.showMessageDialog(null, "Seleccione el Nombre.");
                 e.consume();
             }
         });

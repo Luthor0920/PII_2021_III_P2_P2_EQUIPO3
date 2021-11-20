@@ -206,7 +206,7 @@ public class frmEmpleado {
         txtDNI.addKeyListener(new KeyAdapter() {
             @Override
             public void keyTyped(KeyEvent e) {
-                JOptionPane.showMessageDialog(null, "Seleccione el DNI.");
+                JOptionPane.showMessageDialog(null, "Seleccione el Nombre.");
                 e.consume();
             }
         });
@@ -244,7 +244,7 @@ public class frmEmpleado {
                         sdf.format(empleado.getFechaIngreso()),
                         empleado.getNivelAcademico()
                 };
-                modelo.addColumn(registroLeido);
+                modelo.addRow(registroLeido);
             }
             tblDatos.setModel(modelo);
         } catch (Exception e) {
