@@ -201,15 +201,6 @@ public class frmMaquila {
         modelo.addColumn("Telefono");
         modelo.addColumn("Correo");
         modelo.addColumn("Cantidad de Empleados");
-        BufferedImage imagen = null;
-        try {
-            URL archivo = getClass().getResource("src/recursos/imagenes/icono-registrar.png");
-            imagen = ImageIO.read(archivo);
-        } catch (Exception ex) {
-            JOptionPane.showMessageDialog(null, ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
-        }
-        ImageIcon icono = new ImageIcon(imagen);
-        btnRegistrar.setIcon(icono);
         leerDatos();
         llenarComboMaquilas();
     }

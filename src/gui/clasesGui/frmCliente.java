@@ -72,11 +72,12 @@ public class frmCliente {
                         JOptionPane.showMessageDialog(null, "Guardado", "Exito", JOptionPane.INFORMATION_MESSAGE);
                         leerDatos();
                         llenarComboClientes();
+                        limpiar();
                     }
                     else
                         throw new Exception(respuesta);
                 } catch (Exception ex) {
-                    JOptionPane.showMessageDialog(null, ex.getMessage(), "Errpr", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(null, ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
                 }
             }
         });
@@ -99,7 +100,7 @@ public class frmCliente {
                     llenarComboDNI();
                     limpiar();
                 } catch (Exception ex) {
-                    JOptionPane.showMessageDialog(null, ex.getMessage(), "Errpr", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(null, ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
                 }
             }
         });
@@ -136,7 +137,7 @@ public class frmCliente {
                     llenarComboDNI();
                     limpiar();
                 } catch (Exception ex) {
-                    JOptionPane.showMessageDialog(null, ex.getMessage(), "Errpr", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(null, ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
                 }
             }
         });
@@ -166,7 +167,7 @@ public class frmCliente {
                         limpiar();
                     }
                 } catch (Exception ex) {
-                    JOptionPane.showMessageDialog(null, ex.getMessage(), "Errpr", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(null, ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
                 }
             }
         });
@@ -205,7 +206,7 @@ public class frmCliente {
                     long dni = ((Item)objeto).getCodigo();
                     txtDNI.setText(String.valueOf(dni));
                 } catch (Exception ex) {
-                    JOptionPane.showMessageDialog(null, ex.getMessage(), "Errpr", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(null, ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
                 }
 
             }
@@ -255,7 +256,7 @@ public class frmCliente {
             }
             tblDatos.setModel(modelo);
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, e.getMessage(), "Errpr", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
         }
     }
 
