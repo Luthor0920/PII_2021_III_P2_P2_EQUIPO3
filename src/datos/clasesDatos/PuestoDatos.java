@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class PuestoDatos {
-    public static String InsertarPuesto(Puesto pPuesto){
+    public static String InsertarPuesto(Puesto pPuesto) throws SQLException {
         try{
             Connection cn = Conexion.obtenerConexion();
             String sql = "INSERT INTO Puesto VALUES(?,?,?,?,?,?,?)";
@@ -24,8 +24,7 @@ public class PuestoDatos {
             ps.close();
             cn.close();
         }catch (Exception e){
-            e.printStackTrace();
-            return "Error "+e.getMessage();
+            throw new SQLException(e.getMessage());
         }
         return null;
     }
@@ -59,7 +58,7 @@ public class PuestoDatos {
     public static String ActualizarPuesto(Puesto pPuesto) throws SQLException{
         try{
             Connection cn = Conexion.obtenerConexion();
-            String sql = "UPDATE Puesto SET Nombre = ?, NumeroEstaciones = ?, EstudioMinimo = ?, CantidadEmpleados = ?" +
+            String sql = "UPDATE Puesto SET Nombre = ?, NumeroEstaciones = ?, EstudioMinimo = ?, CantidadEmpleado = ?" +
                     ", FechaInicio = ?, Uniforme = ? WHERE Codigo = ?";
             PreparedStatement ps = cn.prepareStatement(sql);
             ps.setString(1, pPuesto.getNombre());
@@ -73,8 +72,7 @@ public class PuestoDatos {
             ps.close();
             cn.close();
         }catch (Exception e){
-            e.printStackTrace();
-            return "Error "+e.getMessage();
+            throw new SQLException(e.getMessage());
         }
         return null;
     }
@@ -88,8 +86,7 @@ public class PuestoDatos {
             ps.close();
             cn.close();
         }catch (Exception e){
-            e.printStackTrace();
-            return "Error "+e.getMessage();
+            throw new SQLException(e.getMessage());
         }
         return null;
     }
@@ -101,7 +98,7 @@ public class PuestoDatos {
                     "FROM Puesto WHERE UPPER(Nombre) LIKE ?";
             PreparedStatement ps = cn.prepareStatement(sql);
             ps.setString(1, "%"+pPuesto.getNombre().toUpperCase()+"%");
-            ResultSet rs = ps.getResultSet();
+            ResultSet rs = ps.executeQuery();
             if (rs.next()){
                 do{
                     Puesto puesto = new Puesto();
@@ -115,7 +112,7 @@ public class PuestoDatos {
                     listaPuesto.add(puesto);
                 }while (rs.next());
             }else{
-                throw new SQLException("No se encontro coincidencia");
+                throw new SQLException("Error: No se encontro coincidencia");
             }
             rs.close();
             ps.close();

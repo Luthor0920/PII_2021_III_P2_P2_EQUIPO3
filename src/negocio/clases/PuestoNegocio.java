@@ -20,43 +20,43 @@ public class PuestoNegocio {
         String respuesta = "Error";
         try{
             if (pPuesto.getCodigo() <= 0) {
-                throw new Exception("El codigo no debe ser menor o igual a 0");
+                throw new Exception("Error: El codigo no debe ser menor o igual a 0");
             }
             if (String.valueOf(pPuesto.getCodigo()).isEmpty()){
-                throw new Exception("El valor del codigo no debe estar vacío");
+                throw new Exception("Error: El valor del codigo no debe estar vacío");
             }
             if(pPuesto.getNombre().isEmpty()){
-                throw new Exception("El valor Nombre no debe estar vacío");
+                throw new Exception("Error: El valor Nombre no debe estar vacío");
             }
             if (pPuesto.getNombre().length() < 3){
-                throw new Exception("Nombre demasiado corto");
+                throw new Exception("Error: Nombre demasiado corto");
             }
             if (String.valueOf(pPuesto.getNumeroEstaciones()).isEmpty()){
-                throw new Exception("El valor número de estaciones no debe estar vacío");
+                throw new Exception("Error: El valor número de estaciones no debe estar vacío");
             }
             if (pPuesto.getNumeroEstaciones() <= 0){
-                throw new Exception("El número de estaciones no puede ser menor o igual a 0");
+                throw new Exception("Error: El número de estaciones no puede ser menor o igual a 0");
             }
             if (pPuesto.getEstudioMinimo().isEmpty()){
-                throw new Exception("Estudio minimo no puede estar vacío");
+                throw new Exception("Error: Estudio minimo no puede estar vacío");
             }
             if (pPuesto.getEstudioMinimo().length() <= 3){
-                throw new Exception("Valor de Estudio minimo demasiado corto");
+                throw new Exception("Error: Valor de Estudio minimo demasiado corto");
             }
             if (pPuesto.getCantidadEmpleados() <= 0){
-                throw new Exception("La cantidad de empleados no puede ser menor o igual a 0");
+                throw new Exception("Error: La cantidad de empleados no puede ser menor o igual a 0");
             }
             if (pPuesto.getFechaInicio().toString().isEmpty()){
-                throw new Exception("La Fecha de inicio no puede estar vacía");
+                throw new Exception("Error: La Fecha de inicio no puede estar vacía");
             }
             if (pPuesto.getFechaInicio().getYear() > 2021){
-                throw new Exception("Fecha ingresada invalida");
+                throw new Exception("Error: Fecha ingresada invalida");
             }
             if (pPuesto.getUniforme().isEmpty()){
-                throw new Exception("El valor uniforme no puede estar vacío");
+                throw new Exception("Error: El valor uniforme no puede estar vacío");
             }
             if (pPuesto.getUniforme().length() > 2){
-                throw new Exception("Valor de uniforme ingresado invalido");
+                throw new Exception("Error: Valor de uniforme ingresado invalido");
             }
             respuesta = PuestoDatos.InsertarPuesto(pPuesto);
             if (respuesta == null) {
@@ -65,50 +65,52 @@ public class PuestoNegocio {
         } catch (Exception e) {
             respuesta = e.getMessage();
         }
-        return respuesta;
+        finally {
+            return respuesta;
+        }
     }
     public void Actualizar(Puesto pPuesto) throws Exception{
         try {
             if (pPuesto.getCodigo() <= 0) {
-                throw new Exception("El codigo no debe ser menor o igual a 0");
+                throw new Exception("Error: El codigo no debe ser menor o igual a 0");
             }
-            if (String.valueOf(pPuesto.getCodigo()).isEmpty()) {
-                throw new Exception("El valor del codigo no debe estar vacío");
+            if (String.valueOf(pPuesto.getCodigo()).isEmpty()){
+                throw new Exception("Error: El valor del codigo no debe estar vacío");
             }
-            if (pPuesto.getNombre().isEmpty()) {
-                throw new Exception("El valor Nombre no debe estar vacío");
+            if(pPuesto.getNombre().isEmpty()){
+                throw new Exception("Error: El valor Nombre no debe estar vacío");
             }
-            if (pPuesto.getNombre().length() < 3) {
-                throw new Exception("Nombre demasiado corto");
+            if (pPuesto.getNombre().length() < 3){
+                throw new Exception("Error: Nombre demasiado corto");
             }
-            if (String.valueOf(pPuesto.getNumeroEstaciones()).isEmpty()) {
-                throw new Exception("El valor número de estaciones no debe estar vacío");
+            if (String.valueOf(pPuesto.getNumeroEstaciones()).isEmpty()){
+                throw new Exception("Error: El valor número de estaciones no debe estar vacío");
             }
-            if (pPuesto.getNumeroEstaciones() <= 0) {
-                throw new Exception("El número de estaciones no puede ser menor o igual a 0");
+            if (pPuesto.getNumeroEstaciones() <= 0){
+                throw new Exception("Error: El número de estaciones no puede ser menor o igual a 0");
             }
-            if (pPuesto.getEstudioMinimo().isEmpty()) {
-                throw new Exception("Estudio minimo no puede estar vacío");
+            if (pPuesto.getEstudioMinimo().isEmpty()){
+                throw new Exception("Error: Estudio minimo no puede estar vacío");
             }
-            if (pPuesto.getEstudioMinimo().length() <= 3) {
-                throw new Exception("Valor de Estudio minimo demasiado corto");
+            if (pPuesto.getEstudioMinimo().length() <= 3){
+                throw new Exception("Error: Valor de Estudio minimo demasiado corto");
             }
-            if (pPuesto.getCantidadEmpleados() <= 0) {
-                throw new Exception("La cantidad de empleados no puede ser menor o igual a 0");
+            if (pPuesto.getCantidadEmpleados() <= 0){
+                throw new Exception("Error: La cantidad de empleados no puede ser menor o igual a 0");
             }
-            if (pPuesto.getFechaInicio().toString().isEmpty()) {
-                throw new Exception("La Fecha de inicio no puede estar vacía");
+            if (pPuesto.getFechaInicio().toString().isEmpty()){
+                throw new Exception("Error: La Fecha de inicio no puede estar vacía");
             }
-            if (pPuesto.getFechaInicio().getYear() > 2021) {
-                throw new Exception("Fecha ingresada invalida");
+            if (pPuesto.getFechaInicio().getYear() > 2021){
+                throw new Exception("Error: Fecha ingresada invalida");
             }
-            if (pPuesto.getUniforme().isEmpty()) {
-                throw new Exception("El valor uniforme no puede estar vacío");
+            if (pPuesto.getUniforme().isEmpty()){
+                throw new Exception("Error: El valor uniforme no puede estar vacío");
             }
-            if (pPuesto.getUniforme().length() > 2) {
-                throw new Exception("Valor de uniforme ingresado invalido");
+            if (pPuesto.getUniforme().length() > 2){
+                throw new Exception("Error: Valor de uniforme ingresado invalido");
             }
-            PuestoDatos.InsertarPuesto(pPuesto);
+            PuestoDatos.ActualizarPuesto(pPuesto);
         }catch (Exception e){
             throw new Exception(e.getMessage());
         }
@@ -129,11 +131,11 @@ public class PuestoNegocio {
     public List<Puesto> Buscar(Puesto pPuesto) throws Exception{
         List<Puesto> listaPuesto = new ArrayList<>();
         try{
-            if (pPuesto.getCodigo() <= 0) {
-                throw new Exception("El codigo no debe ser menor o igual a 0");
+            if(pPuesto.getNombre().isEmpty()){
+                throw new Exception("Error: El valor Nombre no debe estar vacío");
             }
-            if (String.valueOf(pPuesto.getCodigo()).isEmpty()) {
-                throw new Exception("El valor del codigo no debe estar vacío");
+            if (pPuesto.getNombre().length() < 3){
+                throw new Exception("Error: Nombre demasiado corto");
             }
             listaPuesto = PuestoDatos.BuscarPuesto(pPuesto);
         }catch (Exception e){
