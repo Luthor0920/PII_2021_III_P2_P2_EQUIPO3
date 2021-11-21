@@ -101,7 +101,6 @@ public class frmPrincipal {
         btnMaquila.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                frmPrincipal cerrarPpal = new frmPrincipal();
                 try {
                     frmMaquila.main();
                 } catch (Exception ex) {
