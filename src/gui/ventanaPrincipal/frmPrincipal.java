@@ -20,6 +20,7 @@ public class frmPrincipal {
     private JButton btnFactura;
     private JButton btnSalir;
     private JButton btnPuesto;
+    private JLabel lblTitulo;
 
     public frmPrincipal() {
 
