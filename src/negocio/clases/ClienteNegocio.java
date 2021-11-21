@@ -153,7 +153,7 @@ public class ClienteNegocio {
             //        (!pCliente.getTallaCamisa().contains("L")) || (!pCliente.getTallaCamisa().contains("XL")) || (!pCliente.getTallaCamisa().contains("XXL"))) {
             //    throw new Exception("Error: Talla de camisa invalida.");
             //}
-            if (pCliente.getTallaCamisa().length() > 3) {
+            if (pCliente.getTallaCamisa().length() > 4) {
                 throw new Exception("Error: Talla de camisa incorrecta.");
             }
             if (String.valueOf(pCliente.getTallaPantalon()).isEmpty()) {

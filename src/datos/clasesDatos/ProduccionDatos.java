@@ -60,7 +60,7 @@ public class ProduccionDatos {
     public static String ActualizarProduccion(Produccion pProduccion) throws SQLException{
         try{
             Connection cn = Conexion.obtenerConexion();
-            String sql = "UPDATE Produccion SET CodigoPrenda = ?, CantidadPrenda = ?, DiseñoPrenda = ?, TipoPrenda = ?" +
+            String sql = "UPDATE Produccion SET CodigoLote = ?, CantidadPrenda = ?, DiseñoPrenda = ?, TipoPrenda = ?" +
                     ", TallaPrenda = ?, PrecioPrenda = ? WHERE CodigoPrenda = ?";
             PreparedStatement ps = cn.prepareStatement(sql);
             ps.setLong(1, pProduccion.getCodigoLote());
@@ -98,11 +98,11 @@ public class ProduccionDatos {
         List<Produccion> listaProduccion = new ArrayList<>();
         try{
             Connection cn = Conexion.obtenerConexion();
-            String sql = "SELECT CodigoPrenda, CodigoLote, CantidadPrenda, DiseñoPrenda, TipoPrenda, TallaPrenda," +
+            String sql = "SELECT CodigoPrenda, CodigoLote, CantidadPrenda, DiseñoPrenda, TipoPrenda, TallaPrenda, " +
                     "PrecioPrenda FROM Produccion WHERE CodigoPrenda LIKE ?";
             PreparedStatement ps = cn.prepareStatement(sql);
-            ps.setLong(1, Long.parseLong("%"+pProduccion.getCodigoPrenda()+"%"));
-            ResultSet rs = ps.getResultSet();
+            ps.setLong(1, pProduccion.getCodigoPrenda());
+            ResultSet rs = ps.executeQuery();
             if (rs.next()) {
                 do{
                     Produccion produccion = new Produccion();
@@ -116,7 +116,7 @@ public class ProduccionDatos {
                     listaProduccion.add(produccion);
                 }while(rs.next());
             }else{
-                throw new SQLException("No se encontró coincidencia");
+                throw new SQLException("Error: No se encontró coincidencia");
             }
             rs.close();
             ps.close();

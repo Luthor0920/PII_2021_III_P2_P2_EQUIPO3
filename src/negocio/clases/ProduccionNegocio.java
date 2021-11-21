@@ -19,41 +19,45 @@ public class ProduccionNegocio {
     public String InsertarProduccion(Produccion pProduccion) throws Exception{
         String respuesta = "Error";
         try{
-            if (pProduccion.getCodigoPrenda() <= 0){
-                throw new Exception("El valor del codigo de prenda no puede ser menor o igual a 0");
-            }
             if (String.valueOf(pProduccion.getCodigoPrenda()).isEmpty()){
-                throw new Exception("El valor del codigo prenda no puede estar vacio");
+                throw new Exception("Error: El valor del codigo prenda no puede estar vacio");
             }
-            if (pProduccion.getCodigoLote() <= 0){
-                throw new Exception("El valor del codigo de lote no puede ser menor o igual a 0");
+            if (pProduccion.getCodigoPrenda() <= 0){
+                throw new Exception("Error: El valor del codigo de prenda no puede ser menor o igual a 0");
             }
             if (String.valueOf(pProduccion.getCodigoLote()).isEmpty()){
-                throw new Exception("El valor codigo lote no puede estar vacío");
+                throw new Exception("Error: El valor codigo lote no puede estar vacío");
             }
-            if (pProduccion.getTipoPrenda().isEmpty()){
-                throw new Exception("El valor tipo de prenda no puede estar vacío");
-            }
-            if (pProduccion.getDiseñoPrenda().isEmpty()){
-                throw new Exception("El valor doseño de prenda no puede estar vacío");
+            if (pProduccion.getCodigoLote() <= 0){
+                throw new Exception("Error: El valor del codigo de lote no puede ser menor o igual a 0");
             }
             if (pProduccion.getCantidadPrenda() <= 0){
-                throw new Exception("La cantidad no puede ser menor o igual a 0");
+                throw new Exception("Error: La cantidad no puede ser menor o igual a 0");
             }
             if (String.valueOf(pProduccion.getCantidadPrenda()).isEmpty()){
-                throw new Exception("La cantidad de prendas no puede estar vacío");
+                throw new Exception("Error: La cantidad de prendas no puede estar vacío");
             }
+            if (pProduccion.getDiseñoPrenda().isEmpty()){
+                throw new Exception("Error: El valor diseño de prenda no puede estar vacío");
+            }
+            if (pProduccion.getTipoPrenda().isEmpty()){
+                throw new Exception("Error: El valor tipo de prenda no puede estar vacío");
+            }
+
             if (pProduccion.getTallaPrenda().isEmpty()){
-                throw new Exception("El valor de la talla no puede estar vacío");
+                throw new Exception("Error: El valor de la talla no puede estar vacío");
             }
-            if (!(pProduccion.getTallaPrenda().equalsIgnoreCase("XXS, XS, S, M, L, XL, XXL, XXXL"))){
-                throw new Exception("El valor de la talla debe ser XXS, XS, S, M, L, XL, XXL o XXXL");
+            //if (!(pProduccion.getTallaPrenda().equalsIgnoreCase("XXS, XS, S, M, L, XL, XXL, XXXL"))){
+            //    throw new Exception("Error: El valor de la talla debe ser XXS, XS, S, M, L, XL, XXL o XXXL");
+            //}
+            if (pProduccion.getTallaPrenda().length() > 4) {
+                throw new Exception("Error: Talla incorrecta.");
             }
             if (String.valueOf(pProduccion.getCostoPrenda()).isEmpty()){
-                throw new Exception("El costo de la prenda no puede estar vacío");
+                throw new Exception("Error: El costo de la prenda no puede estar vacío");
             }
             if (pProduccion.getCostoPrenda() <= 0){
-                throw new Exception("El costo de la prenda no puede ser menor o igual a 0");
+                throw new Exception("Error: El costo de la prenda no puede ser menor o igual a 0");
             }
             respuesta = ProduccionDatos.InsertarProduccion(pProduccion);
             if (respuesta == null){
@@ -67,48 +71,48 @@ public class ProduccionNegocio {
         }
     }
     public void Actualizar(Produccion pProduccion) throws Exception{
-        String respuesta = "Error";
         try{
-            if (pProduccion.getCodigoPrenda() <= 0){
-                throw new Exception("El valor del codigo de prenda no puede ser menor o igual a 0");
-            }
             if (String.valueOf(pProduccion.getCodigoPrenda()).isEmpty()){
-                throw new Exception("El valor del codigo prenda no puede estar vacio");
+                throw new Exception("Error: El valor del codigo prenda no puede estar vacio");
             }
-            if (pProduccion.getCodigoLote() <= 0){
-                throw new Exception("El valor del codigo de lote no puede ser menor o igual a 0");
+            if (pProduccion.getCodigoPrenda() <= 0){
+                throw new Exception("Error: El valor del codigo de prenda no puede ser menor o igual a 0");
             }
             if (String.valueOf(pProduccion.getCodigoLote()).isEmpty()){
-                throw new Exception("El valor codigo lote no puede estar vacío");
+                throw new Exception("Error: El valor codigo lote no puede estar vacío");
             }
-            if (pProduccion.getTipoPrenda().isEmpty()){
-                throw new Exception("El valor tipo de prenda no puede estar vacío");
-            }
-            if (pProduccion.getDiseñoPrenda().isEmpty()){
-                throw new Exception("El valor doseño de prenda no puede estar vacío");
+            if (pProduccion.getCodigoLote() <= 0){
+                throw new Exception("Error: El valor del codigo de lote no puede ser menor o igual a 0");
             }
             if (pProduccion.getCantidadPrenda() <= 0){
-                throw new Exception("La cantidad no puede ser menor o igual a 0");
+                throw new Exception("Error: La cantidad no puede ser menor o igual a 0");
             }
             if (String.valueOf(pProduccion.getCantidadPrenda()).isEmpty()){
-                throw new Exception("La cantidad de prendas no puede estar vacío");
+                throw new Exception("Error: La cantidad de prendas no puede estar vacío");
             }
+            if (pProduccion.getDiseñoPrenda().isEmpty()){
+                throw new Exception("Error: El valor diseño de prenda no puede estar vacío");
+            }
+            if (pProduccion.getTipoPrenda().isEmpty()){
+                throw new Exception("Error: El valor tipo de prenda no puede estar vacío");
+            }
+
             if (pProduccion.getTallaPrenda().isEmpty()){
-                throw new Exception("El valor de la talla no puede estar vacío");
+                throw new Exception("Error: El valor de la talla no puede estar vacío");
             }
-            if (!(pProduccion.getTallaPrenda().equalsIgnoreCase("XXS, XS, S, M, L, XL, XXL, XXXL"))){
-                throw new Exception("El valor de la talla debe ser XXS, XS, S, M, L, XL, XXL o XXXL");
+            //if (!(pProduccion.getTallaPrenda().equalsIgnoreCase("XXS, XS, S, M, L, XL, XXL, XXXL"))){
+            //    throw new Exception("Error: El valor de la talla debe ser XXS, XS, S, M, L, XL, XXL o XXXL");
+            //}
+            if (pProduccion.getTallaPrenda().length() > 4) {
+                throw new Exception("Error: Talla incorrecta.");
             }
             if (String.valueOf(pProduccion.getCostoPrenda()).isEmpty()){
-                throw new Exception("El costo de la prenda no puede estar vacío");
+                throw new Exception("Error: El costo de la prenda no puede estar vacío");
             }
             if (pProduccion.getCostoPrenda() <= 0){
-                throw new Exception("El costo de la prenda no puede ser menor o igual a 0");
+                throw new Exception("Error: El costo de la prenda no puede ser menor o igual a 0");
             }
-            respuesta = ProduccionDatos.ActualizarProduccion(pProduccion);
-            if (respuesta == null){
-                respuesta = "Guardado Exitosamente";
-            }
+            ProduccionDatos.ActualizarProduccion(pProduccion);
         }catch (Exception e){
             e.printStackTrace();
         }
@@ -135,7 +139,7 @@ public class ProduccionNegocio {
             if (pProduccion.getCodigoPrenda() <= 0) {
                 throw new Exception("Error: Indique el codigo correctamente.");
             }
-            ProduccionDatos.BuscarProduccion(pProduccion);
+            listaProduccion = ProduccionDatos.BuscarProduccion(pProduccion);
         }catch (Exception e){
             throw new Exception(e.getMessage());
         }

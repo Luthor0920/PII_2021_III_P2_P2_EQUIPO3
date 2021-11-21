@@ -12,7 +12,7 @@ public class FacturaDatos {
     public static String IngresarFactura(Factura pFactura) throws SQLException{
         try{
             Connection cn = Conexion.obtenerConexion();
-            String sql = "INSERT INTO Factura VALUES (?,?,?,?,?,?,?,?,?)";
+            String sql = "INSERT INTO Factura VALUES(?,?,?,?,?,?,?,?,?)";
             PreparedStatement ps = cn.prepareStatement(sql);
             ps.setLong(1, pFactura.getNumeroFactura());
             ps.setString(2, pFactura.getCliente());
@@ -37,7 +37,7 @@ public class FacturaDatos {
         try{
             Connection cn = Conexion.obtenerConexion();
             Statement st = cn.createStatement();
-            String sql = "SELECT NumeroFactura, Cliente, Empleado, Fecha, Producto, Cantidad, SubTotal, ISV, TotalPagar" +
+            String sql = "SELECT NumeroFactura, Cliente, Empleado, Fecha, Producto, Cantidad, SubTotal, ISV, TotalPagar " +
                     "FROM Factura";
             ResultSet rs = st.executeQuery(sql);
             while(rs.next()){
@@ -64,7 +64,7 @@ public class FacturaDatos {
     public static String ActualizarFactura(Factura pFactura) throws SQLException{
         try{
             Connection cn = Conexion.obtenerConexion();
-            String sql = "UPDATE Factura SET Cliente = ?, Empleado = ?, Fecha = ?, Producto = ?, Cantidad = ?," +
+            String sql = "UPDATE Factura SET Cliente = ?, Empleado = ?, Fecha = ?, Producto = ?, Cantidad = ?, " +
                     "SubTotal = ?, ISV = ?, TotalPagar = ? WHERE NumeroFactura = ?";
             PreparedStatement ps = cn.prepareStatement(sql);
             ps.setString(1, pFactura.getCliente());
@@ -88,7 +88,7 @@ public class FacturaDatos {
     public static String EliminarFactura(Factura pFactura) throws SQLException{
         try{
             Connection cn = Conexion.obtenerConexion();
-            String sql = "DELETE FROM Factura WHERE NumeroCuenta = ?";
+            String sql = "DELETE FROM Factura WHERE NumeroFactura = ?";
             PreparedStatement ps = cn.prepareStatement(sql);
             ps.setLong(1, pFactura.getNumeroFactura());
             ps.execute();
@@ -104,7 +104,7 @@ public class FacturaDatos {
         List<Factura> listaFactura = new ArrayList<>();
         try{
             Connection cn = Conexion.obtenerConexion();
-            String sql = "SELECT NumeroFactura, Cliente, Empleado, Fecha, Producto, Cantidad, SubTotal, ISV, TotalPagar" +
+            String sql = "SELECT NumeroFactura, Cliente, Empleado, Fecha, Producto, Cantidad, SubTotal, ISV, TotalPagar " +
                     "FROM Factura WHERE NumeroFactura LIKE ?";
             PreparedStatement ps = cn.prepareStatement(sql);
             ps.setLong(1, pFactura.getNumeroFactura());
@@ -124,7 +124,7 @@ public class FacturaDatos {
                     listaFactura.add(factura);
                 }while(rs.next());
             }else{
-                throw new SQLException("No se encontro coincidencia");
+                throw new SQLException("Error: No se encontro coincidencia.");
             }
             ps.close();
             rs.close();
