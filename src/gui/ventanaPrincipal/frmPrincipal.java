@@ -1,7 +1,7 @@
 package gui.ventanaPrincipal;
 
 import com.sun.deploy.uitoolkit.Window;
-import gui.clasesGui.frmMaquila;
+import gui.clasesGui.*;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -42,7 +42,7 @@ public class frmPrincipal {
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
-
+                    frmPersona.main();
                 } catch (Exception ex) {
                     JOptionPane.showMessageDialog(null, ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
                 }
@@ -62,7 +62,7 @@ public class frmPrincipal {
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
-
+                    frmCliente.main();
                 } catch (Exception ex) {
                     JOptionPane.showMessageDialog(null, ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
                 }
@@ -72,7 +72,7 @@ public class frmPrincipal {
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
-
+                    frmEmpleado.main();
                 } catch (Exception ex) {
                     JOptionPane.showMessageDialog(null, ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
                 }
@@ -82,7 +82,7 @@ public class frmPrincipal {
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
-
+                    frmProveedor.main();
                 } catch (Exception ex) {
                     JOptionPane.showMessageDialog(null, ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
                 }
@@ -102,8 +102,7 @@ public class frmPrincipal {
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
-                    frmMaquila verMaquila = new frmMaquila();
-                    //frmMaquila.main();
+                    frmMaquila.main();
                 } catch (Exception ex) {
                     JOptionPane.showMessageDialog(null, ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
                 }
