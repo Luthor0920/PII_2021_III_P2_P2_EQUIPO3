@@ -94,4 +94,36 @@ public class ProduccionDatos {
         }
         return null;
     }
+    public static List<Produccion> BuscarProduccion(Produccion pProduccion) throws SQLException{
+        List<Produccion> listaProduccion = new ArrayList<>();
+        try{
+            Connection cn = Conexion.obtenerConexion();
+            String sql = "SELECT CodigoPrenda, CodigoLote, CantidadPrenda, DiseñoPrenda, TipoPrenda, TallaPrenda," +
+                    "PrecioPrenda FROM Produccion WHERE CodigoPrenda LIKE ?";
+            PreparedStatement ps = cn.prepareStatement(sql);
+            ps.setLong(1, Long.parseLong("%"+pProduccion.getCodigoPrenda()+"%"));
+            ResultSet rs = ps.getResultSet();
+            if (rs.next()) {
+                do{
+                    Produccion produccion = new Produccion();
+                    produccion.setCodigoPrenda(rs.getLong(1));
+                    produccion.setCodigoLote(rs.getLong(2));
+                    produccion.setCantidadPrenda(rs.getInt(3));
+                    produccion.setDiseñoPrenda(rs.getString(4));
+                    produccion.setTipoPrenda(rs.getString(5));
+                    produccion.setTallaPrenda(rs.getString(6));
+                    produccion.setCostoPrenda(rs.getDouble(7));
+                    listaProduccion.add(produccion);
+                }while(rs.next());
+            }else{
+                throw new SQLException("No se encontró coincidencia");
+            }
+            rs.close();
+            ps.close();
+            cn.close();
+        }catch (SQLException e){
+            throw new SQLException(e.getMessage());
+        }
+        return listaProduccion;
+    }
 }

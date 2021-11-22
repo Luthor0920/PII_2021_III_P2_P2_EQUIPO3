@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class PuestoDatos {
-    public static String InsertarArea(Puesto pPuesto){
+    public static String InsertarPuesto(Puesto pPuesto){
         try{
             Connection cn = Conexion.obtenerConexion();
             String sql = "INSERT INTO Puesto VALUES (?,?,?,?,?,?,?)";
@@ -100,7 +100,7 @@ public class PuestoDatos {
             String sql = "SELECT Codigo, Nombre, NumeroEstaciones, EstudioMinimo, CantidadEmpleado, FechaInicio, Uniforme " +
                     "FROM Puesto WHERE UPPER (Nombre) LIKE ?";
             PreparedStatement ps = cn.prepareStatement(sql);
-            ps.setString(1, pPuesto.getNombre());
+            ps.setString(1, "%"+pPuesto.getNombre().toUpperCase()+"%");
             ResultSet rs = ps.getResultSet();
             if (rs.next()){
                 do{
