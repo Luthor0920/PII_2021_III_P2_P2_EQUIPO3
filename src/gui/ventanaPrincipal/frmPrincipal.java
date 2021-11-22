@@ -102,7 +102,8 @@ public class frmPrincipal {
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
-                    frmMaquila.main();
+                    frmMaquila verMaquila = new frmMaquila();
+                    //frmMaquila.main();
                 } catch (Exception ex) {
                     JOptionPane.showMessageDialog(null, ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
                 }

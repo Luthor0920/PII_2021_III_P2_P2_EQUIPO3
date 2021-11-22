@@ -271,7 +271,7 @@ public class frmMaquila {
         txtCantEmpleados.setText("");
     }
 
-    public static void main() {
+    public static void main(String[] args) {
         JFrame frame = new JFrame("Maquila");
         frame.setContentPane(new frmMaquila().jpaPrincipal);
         frame.setResizable(false);
