@@ -30,6 +30,7 @@
             <properties>
               <enabled value="true"/>
               <font name="Bernard MT Condensed" size="24"/>
+              <icon value="recursos/imagenes/icono-maquila.png"/>
               <text value="MAQUILA TEXTIL"/>
             </properties>
           </component>

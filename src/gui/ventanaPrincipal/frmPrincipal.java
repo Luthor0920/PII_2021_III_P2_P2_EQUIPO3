@@ -127,6 +127,7 @@ public class frmPrincipal {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.pack();
         frame.setLocationRelativeTo(null);
+        //frame.setIconImage(new ImageIcon(frame.getClass().getResource("/imagenes/icono-maquila.png")).getImage());
         frame.setVisible(true);
     }
 }

@@ -26,6 +26,7 @@
             </constraints>
             <properties>
               <font name="Bernard MT Condensed" size="24" style="1"/>
+              <icon value="recursos/imagenes/icono-empleado.png"/>
               <text value="Empleados"/>
             </properties>
           </component>

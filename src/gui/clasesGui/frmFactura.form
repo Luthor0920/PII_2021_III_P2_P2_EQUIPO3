@@ -233,6 +233,7 @@
             </constraints>
             <properties>
               <font name="Bernard MT Condensed" size="24" style="1"/>
+              <icon value="recursos/imagenes/icono-factura.png"/>
               <text value="Factura"/>
             </properties>
           </component>

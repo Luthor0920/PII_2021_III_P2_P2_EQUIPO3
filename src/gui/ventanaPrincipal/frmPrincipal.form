@@ -8,6 +8,7 @@
     <properties>
       <background color="-12818829"/>
       <font name="Harlow Solid Italic" size="20"/>
+      <toolTipText value=""/>
     </properties>
     <border type="none"/>
     <children>
@@ -117,7 +118,8 @@
         <properties>
           <font name="Cambria" size="22"/>
           <foreground color="-3"/>
-          <text value="MAQUILA TEXTIL"/>
+          <icon value="recursos/imagenes/icono-maquila.png"/>
+          <text value="MAQUILA TEXTIL&#10;"/>
         </properties>
       </component>
     </children>

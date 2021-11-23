@@ -29,6 +29,7 @@
             </constraints>
             <properties>
               <font name="Bernard MT Condensed" size="24" style="1"/>
+              <icon value="recursos/imagenes/icono-area.png"/>
               <text value="Puesto"/>
             </properties>
           </component>

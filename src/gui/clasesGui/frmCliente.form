@@ -28,6 +28,7 @@
             </constraints>
             <properties>
               <font name="Bernard MT Condensed" size="24" style="1"/>
+              <icon value="recursos/imagenes/icono-cliente.png"/>
               <text value="Clientes"/>
             </properties>
           </component>
