@@ -74,9 +74,9 @@ public class frmPuesto {
                         llenarComboPuesto();
                         limpiar();
                     }
-                    else
+                    else {
                         throw new Exception(respuesta);
-
+                    }
                 } catch (Exception ex) {
                     JOptionPane.showMessageDialog(null, ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
                 }
@@ -272,11 +272,11 @@ public class frmPuesto {
         txtFechaInicio.setText("");
     }
 
-    public static void main(String[] args) {
+    public static void main() {
         JFrame frame = new JFrame("Puesto");
         frame.setContentPane(new frmPuesto().jpaPrincipal);
         frame.setResizable(false);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         frame.pack();
         frame.setLocationRelativeTo(null);
         frame.setVisible(true);

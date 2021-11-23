@@ -39,7 +39,7 @@ public class EmpleadoNegocio {
             if (pEmpleado.getDNI() <= 0) {
                 throw new Exception("Error: El DNI no puede ser menor a 0.");
             }
-            if (String.valueOf(pEmpleado.getDNI()).length() < 13) {
+            if (String.valueOf(pEmpleado.getDNI()).length() < 12) {
                 throw new Exception("Error: El DNI es demasiado corto.");
             }
             if (String.valueOf(pEmpleado.getDNI()).length() > 13) {
@@ -97,7 +97,7 @@ public class EmpleadoNegocio {
             if (pEmpleado.getDNI() <= 0) {
                 throw new Exception("Error: El DNI no puede ser menor a 0.");
             }
-            if (String.valueOf(pEmpleado.getDNI()).length() < 13) {
+            if (String.valueOf(pEmpleado.getDNI()).length() < 12) {
                 throw new Exception("Error: El DNI es demasiado corto.");
             }
             if (String.valueOf(pEmpleado.getDNI()).length() > 13) {

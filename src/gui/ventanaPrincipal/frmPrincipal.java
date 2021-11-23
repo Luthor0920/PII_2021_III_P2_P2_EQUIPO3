@@ -1,6 +1,5 @@
 package gui.ventanaPrincipal;
 
-import com.sun.deploy.uitoolkit.Window;
 import gui.clasesGui.*;
 
 import javax.swing.*;
@@ -53,7 +52,7 @@ public class frmPrincipal {
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
-
+                    frmProduccion.main();
                 } catch (Exception ex) {
                     JOptionPane.showMessageDialog(null, ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
                 }
@@ -93,7 +92,7 @@ public class frmPrincipal {
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
-
+                    frmPuesto.main();
                 } catch (Exception ex) {
                     JOptionPane.showMessageDialog(null, ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
                 }
@@ -113,7 +112,7 @@ public class frmPrincipal {
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
-
+                    frmFactura.main();
                 } catch (Exception ex) {
                     JOptionPane.showMessageDialog(null, ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
                 }
@@ -122,7 +121,7 @@ public class frmPrincipal {
     }
 
     public static void main(String[] args) {
-        JFrame frame = new JFrame("Principal");
+        JFrame frame = new JFrame("Inicio");
         frame.setContentPane(new frmPrincipal().jpaPrincipal);
         frame.setResizable(false);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

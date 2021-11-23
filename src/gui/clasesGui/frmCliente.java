@@ -59,8 +59,8 @@ public class frmCliente {
                 try {
                     Cliente cliente = new Cliente();
                     cliente.setCodigo(Long.parseLong(txtCodigo.getText()));
-                    cliente.setDNI(Long.parseLong(txtDNI.getText()));
                     cliente.setNombre(cboNombre.getSelectedItem().toString());
+                    cliente.setDNI(Long.parseLong(txtDNI.getText()));
                     cliente.setTipoCliente(txtTipoCliente.getText());
                     cliente.setOcupacion(txtOcupacion.getText());
                     cliente.setRecurrencia(txtRecurrencia.getText());

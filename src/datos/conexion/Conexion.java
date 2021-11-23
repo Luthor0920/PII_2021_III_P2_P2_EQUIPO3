@@ -9,7 +9,8 @@ public class Conexion {
     public static Connection obtenerConexion() {
         try {
             //String URL = "jdbc:sqlserver://192.168.1.55:1433;dataBaseName=PII_2021_III_P2_P2_EQUIPO3;";
-            String URL = "jdbc:sqlserver://192.168.1.18:1433;dataBaseName=PII_2021_III_P2_P2_EQUIPO3;";
+            String URL = "jdbc:sqlserver://192.168.0.47:1433;dataBaseName=PII_2021_III_P2_P2_EQUIPO3;";
+            //String URL = "jdbc:sqlserver://192.168.1.18:1433;dataBaseName=PII_2021_III_P2_P2_EQUIPO3;";
             Connection cn = DriverManager.getConnection(URL, USUARIO, CLAVE);
             return cn;
         } catch (Exception e) {

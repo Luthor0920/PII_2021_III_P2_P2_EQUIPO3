@@ -42,7 +42,7 @@ public class ClienteNegocio {
             if (pCliente.getDNI() <= 0) {
                 throw new Exception("Error: El DNI no puede ser menor a 0.");
             }
-            if (String.valueOf(pCliente.getDNI()).length() < 13) {
+            if (String.valueOf(pCliente.getDNI()).length() < 12) {
                 throw new Exception("Error: El DNI es demasiado corto.");
             }
             if (String.valueOf(pCliente.getDNI()).length() > 13) {
@@ -122,7 +122,7 @@ public class ClienteNegocio {
             if (pCliente.getDNI() <= 0) {
                 throw new Exception("Error: El DNI no puede ser menor a 0.");
             }
-            if (String.valueOf(pCliente.getDNI()).length() < 13) {
+            if (String.valueOf(pCliente.getDNI()).length() < 12) {
                 throw new Exception("Error: El DNI es demasiado corto.");
             }
             if (String.valueOf(pCliente.getDNI()).length() > 13) {
